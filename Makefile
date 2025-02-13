@@ -1,38 +1,43 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall
-LDFLAGS = -lpthread
+CFLAGS = -Wall -Werror -g -O2 -fPIC
+AR = ar
+ARFLAGS = rcs
+RM = rm -f
 
 # Directories
-SRC_DIR = .
-BUILD_DIR = ./build
+SRC_DIR = src
+OBJ_DIR = build/obj
+INCLUDE_DIR = include
+LIB_DIR = build
 
-# Default source file and executable
-SRC ?= $(SRC_DIR)/equeue.c $(SRC_DIR)/mlcontext.c $(SRC_DIR)/mainloop.c
-EXEC ?= $(BUILD_DIR)/mainloop
+# Library name
+LIBRARY = $(LIB_DIR)/libeml.a
 
-# Object files (located in the build directory)
-OBJ = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
+# Find all C source files in the src directory
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 
-# Default target: build the executable
-all: $(EXEC)
+# Create object file paths by replacing .c with .o and placing them in obj directory
+OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Rule to create the executable from the object file
-$(EXEC): $(OBJ)
-	$(CC) $(OBJ) -o $(EXEC) $(LDFLAGS)
+# Targets
+all: $(LIBRARY)
 
-# Rule to compile the C source file into an object file
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+# Create static library from object files
+$(LIBRARY): $(OBJ_FILES)
+	$(AR) $(ARFLAGS) $@ $^
 
-# Rule to create the build directory if it doesn't exist
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+# Compile source files into object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)  # Create the obj directory if it doesn't exist
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
-# Clean rule to remove generated files
+# Clean up generated files
 clean:
-	rm -rf $(BUILD_DIR)
+	$(RM) $(OBJ_DIR)/*.o $(LIBRARY)
 
-# Rebuild everything from scratch
+# Rebuild the library
 rebuild: clean all
+
+.PHONY: all clean rebuild
 
