@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "equeue.h"
+#include "eventerr.h"
 
 //Definizione dell'elemento
 struct _EQueueElement{
@@ -18,12 +19,16 @@ struct _EQueue{
 };
 
 //Funzione per creare nuove code
-void EQueueNew(struct _EQueue** q){
+int EQueueNew(struct _EQueue** q){
+  if(q == NULL) return NULL_POINTER_ERR;
   *q=(struct _EQueue*)calloc(1,sizeof(struct _EQueue));
+  return *q == NULL ? MEMORY_ERR : 0;
 }
 
 //Funzione per eliminare le code
-void EQueueDelete(struct _EQueue* q){
+int EQueueDelete(struct _EQueue* q){
+  if(q == NULL) return NULL_POINTER_ERR;
+  
   struct _EQueueElement *tmp=q->head, *next=NULL;
   while(tmp){
     next=tmp->next;
@@ -31,10 +36,12 @@ void EQueueDelete(struct _EQueue* q){
     tmp=next;
   }
   free(q);
+  return 0;
 }
 
 //Aggiungere elementi alla coda
-void EQueuePush(struct _EQueue* q, struct _EQueueElement* e){
+int EQueuePush(struct _EQueue* q, struct _EQueueElement* e){
+  if(q == NULL || e == NULL) return NULL_POINTER_ERR;
   e->next=NULL;
   if(q->nElements==0){
     q->head=e;
@@ -43,13 +50,15 @@ void EQueuePush(struct _EQueue* q, struct _EQueueElement* e){
   }
   q->tail=e;
   q->nElements++;
+  return 0;
 }
 
 //Rimuovere elementi dalla coda
-void EQueuePop(struct _EQueue* q, struct _EQueueElement** e){
+int EQueuePop(struct _EQueue* q, struct _EQueueElement** e){
+  if(q == NULL || e == NULL) return NULL_POINTER_ERR;
+  
   if(q->nElements >= 1){
-    if(e != NULL)
-      *e=q->head;
+    *e=q->head;
     if(q->nElements==1){
       q->head=NULL;
       q->tail=NULL;
@@ -57,16 +66,24 @@ void EQueuePop(struct _EQueue* q, struct _EQueueElement** e){
       q->head=q->head->next;
     }
     q->nElements--;
+  }else{
+    *e=NULL;
   }
+  return 0;
 }
 
 //Crea un nuovo elemento per la coda
-void EQueueElementNew(struct _EQueueElement** e, pthread_t id, uint8_t c, void* data, void* res){
+int EQueueElementNew(struct _EQueueElement** e, pthread_t id, uint8_t c, void* data, void* res){
+  if(e == NULL) return NULL_POINTER_ERR;
+  
   *e=(struct _EQueueElement*)calloc(1,sizeof(struct _EQueueElement));
+  if(*e == NULL) return MEMORY_ERR;
+  
   (*e)->idThread=id;
   (*e)->command=c;
   (*e)->res=res;
   (*e)->data=data;
+  return 0;
 }
 
 //Ottiene il numero di elementi della coda
