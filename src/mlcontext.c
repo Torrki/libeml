@@ -11,14 +11,14 @@ struct _mlcontext{
   pthread_t threadML;
   sigset_t signalMask;
   pthread_mutex_t mutexmlc;
-  struct _EQueue *eventQueue;
+  EQueue *eventQueue;
 };
 
 //Creazione contesto
-int mlContextNew(struct _mlcontext **mlc){
+int mlContextNew(MlContext **mlc){
   if(mlc == NULL) return NULL_POINTER_ERR;
   
-  *mlc=(struct _mlcontext *)calloc(1,sizeof(struct _mlcontext));
+  *mlc=(MlContext *)calloc(1,sizeof(MlContext));
   if(*mlc == NULL) return MEMORY_ERR;
   
   int ret=EQueueNew(&( (*mlc)->eventQueue ));
@@ -42,7 +42,7 @@ int mlContextNew(struct _mlcontext **mlc){
 }
 
 //Eliminazione contesto
-int mlContextDelete(struct _mlcontext *mlc){
+int mlContextDelete(MlContext *mlc){
   if(mlc == NULL) return NULL_POINTER_ERR;
   int ret=0;
   pthread_mutex_t tmp=mlc->mutexmlc;
@@ -61,8 +61,8 @@ int mlContextDelete(struct _mlcontext *mlc){
 }
 
 //Interfaccia per segnalare il mainloop
-int signalMainLoop(struct _mlcontext *mlc, uint8_t c, void* data){
-  struct _EQueueElement *e;
+int signalMainLoop(MlContext *mlc, uint8_t c, void* data){
+  EQueueElement *e;
   int ret=0;
   if(mlc == NULL) return NULL_POINTER_ERR;
   
@@ -78,13 +78,13 @@ int signalMainLoop(struct _mlcontext *mlc, uint8_t c, void* data){
   return 0;
 }
 
-int signalMainLoopReply(struct _mlcontext *mlc, uint8_t c, void* data, void* res){
+int signalMainLoopReply(MlContext *mlc, uint8_t c, void* data, void* res){
   if(mlc == NULL || res == NULL) return NULL_POINTER_ERR;
   
   //Imposto la maschera per la risposta
   int ret=0;
   sigset_t sigMask;
-  struct _EQueueElement *e;
+  EQueueElement *e;
   ret |= sigemptyset (&sigMask);
   ret |= sigaddset (&sigMask, SIGCONT);
   ret |= pthread_sigmask(SIG_BLOCK,&sigMask,NULL);
@@ -110,20 +110,20 @@ int signalMainLoopReply(struct _mlcontext *mlc, uint8_t c, void* data, void* res
 }
 
 //Prende il numero di notifiche in coda
-int GetNSignals(struct _mlcontext *mlc){
+int GetNSignals(MlContext *mlc){
   return GetEQueueElements(mlc->eventQueue);
 }
 
 //Estrae una notifica dalla coda
-struct _EQueueElement* PopEventQueue(struct _mlcontext *mlc){
-  struct _EQueueElement* e=NULL;
+EQueueElement* PopEventQueue(MlContext *mlc){
+  EQueueElement* e=NULL;
   int ret=0;
   
   ret=EQueuePop(mlc->eventQueue, &e);
   return ret == 0 ? e : NULL;
 }
 
-int waitNewEvent(struct _mlcontext *mlc){
+int waitNewEvent(MlContext *mlc){
   if(mlc == NULL) return NULL_POINTER_ERR;
   
   if(pthread_self() == mlc->threadML){
@@ -136,7 +136,7 @@ int waitNewEvent(struct _mlcontext *mlc){
 }
 
 //Stampa della coda delle segnalazioni
-void PrintSignalQueue(struct _mlcontext *mlc){
+void PrintSignalQueue(MlContext *mlc){
   if(mlc != NULL){
     PrintQueue(mlc->eventQueue);
   }

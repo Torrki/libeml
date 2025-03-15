@@ -9,27 +9,27 @@ struct _EQueueElement{
   uint8_t command;
   void *res;
   void* data;
-  struct _EQueueElement *next;
+  EQueueElement *next;
 };
 
 //Definizione della coda
 struct _EQueue{
   uint16_t nElements;
-  struct _EQueueElement *head, *tail;
+  EQueueElement *head, *tail;
 };
 
 //Funzione per creare nuove code
-int EQueueNew(struct _EQueue** q){
+int EQueueNew(EQueue** q){
   if(q == NULL) return NULL_POINTER_ERR;
-  *q=(struct _EQueue*)calloc(1,sizeof(struct _EQueue));
+  *q=(EQueue*)calloc(1,sizeof(EQueue));
   return *q == NULL ? MEMORY_ERR : 0;
 }
 
 //Funzione per eliminare le code
-int EQueueDelete(struct _EQueue* q){
+int EQueueDelete(EQueue* q){
   if(q == NULL) return NULL_POINTER_ERR;
   
-  struct _EQueueElement *tmp=q->head, *next=NULL;
+  EQueueElement *tmp=q->head, *next=NULL;
   while(tmp){
     next=tmp->next;
     free(tmp);
@@ -40,7 +40,7 @@ int EQueueDelete(struct _EQueue* q){
 }
 
 //Aggiungere elementi alla coda
-int EQueuePush(struct _EQueue* q, struct _EQueueElement* e){
+int EQueuePush(EQueue* q, EQueueElement* e){
   if(q == NULL || e == NULL) return NULL_POINTER_ERR;
   e->next=NULL;
   if(q->nElements==0){
@@ -54,7 +54,7 @@ int EQueuePush(struct _EQueue* q, struct _EQueueElement* e){
 }
 
 //Rimuovere elementi dalla coda
-int EQueuePop(struct _EQueue* q, struct _EQueueElement** e){
+int EQueuePop(EQueue* q, EQueueElement** e){
   if(q == NULL || e == NULL) return NULL_POINTER_ERR;
   
   if(q->nElements >= 1){
@@ -73,10 +73,10 @@ int EQueuePop(struct _EQueue* q, struct _EQueueElement** e){
 }
 
 //Crea un nuovo elemento per la coda
-int EQueueElementNew(struct _EQueueElement** e, pthread_t id, uint8_t c, void* data, void* res){
+int EQueueElementNew(EQueueElement** e, pthread_t id, uint8_t c, void* data, void* res){
   if(e == NULL) return NULL_POINTER_ERR;
   
-  *e=(struct _EQueueElement*)calloc(1,sizeof(struct _EQueueElement));
+  *e=(EQueueElement*)calloc(1,sizeof(EQueueElement));
   if(*e == NULL) return MEMORY_ERR;
   
   (*e)->idThread=id;
@@ -87,30 +87,30 @@ int EQueueElementNew(struct _EQueueElement** e, pthread_t id, uint8_t c, void* d
 }
 
 //Ottiene il numero di elementi della coda
-int GetEQueueElements(struct _EQueue* q){
+int GetEQueueElements(EQueue* q){
   return q==NULL ? -1 : q->nElements;
 }
 
 //Ottiene l'ID del thread
-pthread_t GetIdThreadElement(struct _EQueueElement* e){
+pthread_t GetIdThreadElement(EQueueElement* e){
   return e->idThread;
 }
 
 //Ottiene il comando dell'elemento
-uint8_t GetCommandElement(struct _EQueueElement* e){
+uint8_t GetCommandElement(EQueueElement* e){
   return e->command;
 }
 
-void* GetResAddrElement(struct _EQueueElement* e){
+void* GetResAddrElement(EQueueElement* e){
   return e->res;
 }
 
-void* GetDataAddrElement(struct _EQueueElement* e){
+void* GetDataAddrElement(EQueueElement* e){
   return e->data;
 }
 
-void PrintQueue(struct _EQueue* q){
-  struct _EQueueElement *tmp=q->head;
+void PrintQueue(EQueue* q){
+  EQueueElement *tmp=q->head;
   while(tmp){
     printf("(%lu,%hhu)-->",tmp->idThread,tmp->command);
     tmp=tmp->next;

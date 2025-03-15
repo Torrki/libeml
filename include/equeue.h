@@ -1,17 +1,17 @@
 #include <stdint.h>
 #include <pthread.h>
 
-struct _EQueueElement;
-struct _EQueue;
+typedef struct _EQueueElement EQueueElement;
+typedef struct _EQueue EQueue;
 
-int EQueueNew(struct _EQueue** q);
-int EQueueDelete(struct _EQueue* q);
-int EQueuePush(struct _EQueue* q, struct _EQueueElement* e);
-int EQueuePop(struct _EQueue* q, struct _EQueueElement** e);
-int EQueueElementNew(struct _EQueueElement** e, pthread_t id, uint8_t c, void* data, void* res);
-int GetEQueueElements(struct _EQueue* q);
-pthread_t GetIdThreadElement(struct _EQueueElement* e);
-uint8_t GetCommandElement(struct _EQueueElement* e);
-void* GetResAddrElement(struct _EQueueElement* e);
-void* GetDataAddrElement(struct _EQueueElement* e);
-void PrintQueue(struct _EQueue* q);
+int EQueueNew(EQueue** q);
+int EQueueDelete(EQueue* q);
+int EQueuePush(EQueue* q, EQueueElement* e);
+int EQueuePop(EQueue* q, EQueueElement** e);
+int EQueueElementNew(EQueueElement** e, pthread_t id, uint8_t c, void* data, void* res);
+int GetEQueueElements(EQueue* q);
+pthread_t GetIdThreadElement(EQueueElement* e);
+uint8_t GetCommandElement(EQueueElement* e);
+void* GetResAddrElement(EQueueElement* e);
+void* GetDataAddrElement(EQueueElement* e);
+void PrintQueue(EQueue* q);
