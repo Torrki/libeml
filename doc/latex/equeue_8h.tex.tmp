@@ -1,0 +1,249 @@
+\doxysection{include/equeue.h File Reference}
+\hypertarget{equeue_8h}{}\label{equeue_8h}\index{include/equeue.h@{include/equeue.h}}
+
+
+Header per la coda degli eventi.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+Include dependency graph for equeue.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}\label{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87} 
+typedef struct \+\_\+\+EQueue\+Element {\bfseries EQueue\+Element}
+\begin{DoxyCompactList}\small\item\em Tipo di dato per un elemento della coda degli eventi. \end{DoxyCompactList}\item 
+\Hypertarget{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}\label{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe} 
+typedef struct \+\_\+\+EQueue {\bfseries EQueue}
+\begin{DoxyCompactList}\small\item\em Tipo di dato per la coda degli eventi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{equeue_8h_ad59ca7222c5ad9f593a2a2c6c6d8ee0a}{EQueue\+New}} (\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Funzione per la creazione di una coda degli eventi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{equeue_8h_a61807d8b51a8b1268bee64aca1ab3b58}{EQueue\+Delete}} (\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Funzione per la distruzione di una coda degli eventi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{equeue_8h_a417df3c7af5e4660ab64e41b84c7a2e0}{EQueue\+Push}} (\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}q, \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Funzione per aggiungere un elemento alla coda degli eventi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{equeue_8h_a20bef5971ae8b75ee3e6f655bd059aad}{EQueue\+Pop}} (\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}q, \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Funzione per rimuovere un elemento dalla coda degli eventi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{equeue_8h_a707e7d010bfb8df5e0f76bba1c935a45}{EQueue\+Element\+New}} (\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}e, pthread\+\_\+t id, uint8\+\_\+t c, void \texorpdfstring{$\ast$}{*}data, void \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Funzione per la creazione di un elemento EQueue\+Element. ~\newline
+ \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{equeue_8h_a0775edf419e5b8d7092e873a8a9b0ce0}{Get\+EQueue\+Elements}} (\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Funzione per ottenere il numero di elementi di una coda degli eventi. \end{DoxyCompactList}\item 
+pthread\+\_\+t \mbox{\hyperlink{equeue_8h_a4b9d45eaefd0c07e88141a4b76eea8d8}{Get\+Id\+Thread\+Element}} (\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Funzione per ottenere il pthread\+\_\+t associato all\textquotesingle{}elemento. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{equeue_8h_abc77b9389daa62d1143946f6edef36c5}{Get\+Command\+Element}} (\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Funzione per ottenere il comando associato all\textquotesingle{}elemento. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{equeue_8h_a06f81c1629e245331f2bd7dd015db795}{Get\+Res\+Addr\+Element}} (\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Funzione per ottenere l\textquotesingle{}indirizzo associato al risultato del comando dell\textquotesingle{}elemento. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{equeue_8h_a0594289a1a2c10e32a165e922e89d2d8}{Get\+Data\+Addr\+Element}} (\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Funzione per ottenere il l\textquotesingle{}indirizzo associato ai dati per eseguire il comando dell\textquotesingle{}elemento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{equeue_8h_a4a867809456d890c2d8555a28749cb98}{Print\+Queue}} (\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Funzione per stampare la coda degli eventi nello stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header per la coda degli eventi. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{equeue_8h_a61807d8b51a8b1268bee64aca1ab3b58}\label{equeue_8h_a61807d8b51a8b1268bee64aca1ab3b58} 
+\index{equeue.h@{equeue.h}!EQueueDelete@{EQueueDelete}}
+\index{EQueueDelete@{EQueueDelete}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{EQueueDelete()}{EQueueDelete()}}
+{\footnotesize\ttfamily int EQueue\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})}
+
+
+
+Funzione per la distruzione di una coda degli eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Puntatore a una coda. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare il codice NULL\+\_\+\+POINTER\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{equeue_8h_a707e7d010bfb8df5e0f76bba1c935a45}\label{equeue_8h_a707e7d010bfb8df5e0f76bba1c935a45} 
+\index{equeue.h@{equeue.h}!EQueueElementNew@{EQueueElementNew}}
+\index{EQueueElementNew@{EQueueElementNew}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{EQueueElementNew()}{EQueueElementNew()}}
+{\footnotesize\ttfamily int EQueue\+Element\+New (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{e,  }\item[{pthread\+\_\+t}]{id,  }\item[{uint8\+\_\+t}]{c,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{void \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Funzione per la creazione di un elemento EQueue\+Element. ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Indirizzo a un puntatore EQueue\+Element\texorpdfstring{$\ast$}{*} per memorizzare il nuovo elemento. \\
+\hline
+{\em id} & pthread\+\_\+t del thread mittente. \\
+\hline
+{\em c} & Codice del comando. \\
+\hline
+{\em data} & Dati ausiliari da passare insieme al comando. \\
+\hline
+{\em res} & Indirizzo di memoria in cui memorizzare la risposta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR o MEMORY\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{equeue_8h_ad59ca7222c5ad9f593a2a2c6c6d8ee0a}\label{equeue_8h_ad59ca7222c5ad9f593a2a2c6c6d8ee0a} 
+\index{equeue.h@{equeue.h}!EQueueNew@{EQueueNew}}
+\index{EQueueNew@{EQueueNew}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{EQueueNew()}{EQueueNew()}}
+{\footnotesize\ttfamily int EQueue\+New (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})}
+
+
+
+Funzione per la creazione di una coda degli eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Indirizzo a un puntatore EQueue\texorpdfstring{$\ast$}{*}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR o MEMORY\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{equeue_8h_a20bef5971ae8b75ee3e6f655bd059aad}\label{equeue_8h_a20bef5971ae8b75ee3e6f655bd059aad} 
+\index{equeue.h@{equeue.h}!EQueuePop@{EQueuePop}}
+\index{EQueuePop@{EQueuePop}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{EQueuePop()}{EQueuePop()}}
+{\footnotesize\ttfamily int EQueue\+Pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}}]{q,  }\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Funzione per rimuovere un elemento dalla coda degli eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Puntatore a una coda. \\
+\hline
+{\em e} & Indirizzo a un puntatore EQueue\+Element\texorpdfstring{$\ast$}{*} per memorizzare l\textquotesingle{}elemento estratto. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare il codice NULL\+\_\+\+POINTER\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{equeue_8h_a417df3c7af5e4660ab64e41b84c7a2e0}\label{equeue_8h_a417df3c7af5e4660ab64e41b84c7a2e0} 
+\index{equeue.h@{equeue.h}!EQueuePush@{EQueuePush}}
+\index{EQueuePush@{EQueuePush}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{EQueuePush()}{EQueuePush()}}
+{\footnotesize\ttfamily int EQueue\+Push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}}]{q,  }\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Funzione per aggiungere un elemento alla coda degli eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Puntatore a una coda. \\
+\hline
+{\em e} & Puntatore all\textquotesingle{}elemento da aggiungere alla coda q. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare il codice NULL\+\_\+\+POINTER\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{equeue_8h_abc77b9389daa62d1143946f6edef36c5}\label{equeue_8h_abc77b9389daa62d1143946f6edef36c5} 
+\index{equeue.h@{equeue.h}!GetCommandElement@{GetCommandElement}}
+\index{GetCommandElement@{GetCommandElement}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{GetCommandElement()}{GetCommandElement()}}
+{\footnotesize\ttfamily uint8\+\_\+t Get\+Command\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Funzione per ottenere il comando associato all\textquotesingle{}elemento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Un elemento valido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{equeue_8h_a0594289a1a2c10e32a165e922e89d2d8}\label{equeue_8h_a0594289a1a2c10e32a165e922e89d2d8} 
+\index{equeue.h@{equeue.h}!GetDataAddrElement@{GetDataAddrElement}}
+\index{GetDataAddrElement@{GetDataAddrElement}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{GetDataAddrElement()}{GetDataAddrElement()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} Get\+Data\+Addr\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Funzione per ottenere il l\textquotesingle{}indirizzo associato ai dati per eseguire il comando dell\textquotesingle{}elemento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Un elemento valido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{equeue_8h_a0775edf419e5b8d7092e873a8a9b0ce0}\label{equeue_8h_a0775edf419e5b8d7092e873a8a9b0ce0} 
+\index{equeue.h@{equeue.h}!GetEQueueElements@{GetEQueueElements}}
+\index{GetEQueueElements@{GetEQueueElements}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{GetEQueueElements()}{GetEQueueElements()}}
+{\footnotesize\ttfamily int Get\+EQueue\+Elements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})}
+
+
+
+Funzione per ottenere il numero di elementi di una coda degli eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Una coda degli eventi. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{equeue_8h_a4b9d45eaefd0c07e88141a4b76eea8d8}\label{equeue_8h_a4b9d45eaefd0c07e88141a4b76eea8d8} 
+\index{equeue.h@{equeue.h}!GetIdThreadElement@{GetIdThreadElement}}
+\index{GetIdThreadElement@{GetIdThreadElement}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{GetIdThreadElement()}{GetIdThreadElement()}}
+{\footnotesize\ttfamily pthread\+\_\+t Get\+Id\+Thread\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Funzione per ottenere il pthread\+\_\+t associato all\textquotesingle{}elemento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Un elemento valido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{equeue_8h_a06f81c1629e245331f2bd7dd015db795}\label{equeue_8h_a06f81c1629e245331f2bd7dd015db795} 
+\index{equeue.h@{equeue.h}!GetResAddrElement@{GetResAddrElement}}
+\index{GetResAddrElement@{GetResAddrElement}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{GetResAddrElement()}{GetResAddrElement()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} Get\+Res\+Addr\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Funzione per ottenere l\textquotesingle{}indirizzo associato al risultato del comando dell\textquotesingle{}elemento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Un elemento valido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{equeue_8h_a4a867809456d890c2d8555a28749cb98}\label{equeue_8h_a4a867809456d890c2d8555a28749cb98} 
+\index{equeue.h@{equeue.h}!PrintQueue@{PrintQueue}}
+\index{PrintQueue@{PrintQueue}!equeue.h@{equeue.h}}
+\doxysubsubsection{\texorpdfstring{PrintQueue()}{PrintQueue()}}
+{\footnotesize\ttfamily void Print\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}} \texorpdfstring{$\ast$}{*}}]{q }\end{DoxyParamCaption})}
+
+
+
+Funzione per stampare la coda degli eventi nello stdout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Una coda degli eventi. \\
+\hline
+\end{DoxyParams}

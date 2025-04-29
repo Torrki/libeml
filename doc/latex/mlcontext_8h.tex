@@ -1,0 +1,196 @@
+\doxysection{include/mlcontext.h File Reference}
+\hypertarget{mlcontext_8h}{}\label{mlcontext_8h}\index{include/mlcontext.h@{include/mlcontext.h}}
+
+
+Header per il contesto del main loop.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}equeue.\+h"{}}\newline
+Include dependency graph for mlcontext.\+h\+:
+% FIG 0
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}\label{mlcontext_8h_aa725d6c098a254733ad4545286c8d440} 
+typedef struct \+\_\+mlcontext {\bfseries Ml\+Context}
+\begin{DoxyCompactList}\small\item\em Tipo di dato per il contesto del main loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{mlcontext_8h_a9d705933667cb4cac495085a53cb71b8}{ml\+Context\+New}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}mlc)
+\begin{DoxyCompactList}\small\item\em Funzione per la creazione di un nuovo contesto per un main loop. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mlcontext_8h_a21bfccde8f18dd36b04d9809661e4cdd}{ml\+Context\+Delete}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc)
+\begin{DoxyCompactList}\small\item\em Funzione per la distruzione di una coda degli eventi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mlcontext_8h_aac63cfb9f06a9f1c82ed52454ebce2e9}{signal\+Main\+Loop}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc, uint8\+\_\+t c, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Funzione con cui un thread può segnalare un main loop. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mlcontext_8h_ad79e3d687180947c71a622bff686bffd}{signal\+Main\+Loop\+Reply}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc, uint8\+\_\+t c, void \texorpdfstring{$\ast$}{*}data, void \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Funzione con cui un thread può segnalare un main loop. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mlcontext_8h_a66cfb59bbb0a0a8d873be8c6583948a1}{wait\+New\+Event}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc)
+\begin{DoxyCompactList}\small\item\em Funzione con cui il main loop si mette in attesa per ricevere nuovi eventi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mlcontext_8h_a463c2dcba9a6b2ecfac5ada3281ec295}{Get\+NSignals}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc)
+\begin{DoxyCompactList}\small\item\em Funzione con cui un main loop recupera il numero di eventi in coda. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mlcontext_8h_a70d3ce24b58bc3a05a7d567961821aca}{Pop\+Event\+Queue}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc)
+\begin{DoxyCompactList}\small\item\em Funzione con cui un main loop estrae un evento dalla cima della coda. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mlcontext_8h_a642726007e882c83ac590cf093b52de4}{Print\+Signal\+Queue}} (\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}mlc)
+\begin{DoxyCompactList}\small\item\em Funzione per stampare nello stdout una rappresentazione della coda degli eventi associata al main loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header per il contesto del main loop. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mlcontext_8h_a463c2dcba9a6b2ecfac5ada3281ec295}\label{mlcontext_8h_a463c2dcba9a6b2ecfac5ada3281ec295} 
+\index{mlcontext.h@{mlcontext.h}!GetNSignals@{GetNSignals}}
+\index{GetNSignals@{GetNSignals}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{GetNSignals()}{GetNSignals()}}
+{\footnotesize\ttfamily int Get\+NSignals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc }\end{DoxyParamCaption})}
+
+
+
+Funzione con cui un main loop recupera il numero di eventi in coda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mlcontext_8h_a21bfccde8f18dd36b04d9809661e4cdd}\label{mlcontext_8h_a21bfccde8f18dd36b04d9809661e4cdd} 
+\index{mlcontext.h@{mlcontext.h}!mlContextDelete@{mlContextDelete}}
+\index{mlContextDelete@{mlContextDelete}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{mlContextDelete()}{mlContextDelete()}}
+{\footnotesize\ttfamily int ml\+Context\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc }\end{DoxyParamCaption})}
+
+
+
+Funzione per la distruzione di una coda degli eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR,MUTEX\+\_\+\+UNLOCK\+\_\+\+ERR,MUTEX\+\_\+\+LOCK\+\_\+\+ERR,MUTEX\+\_\+\+DESTROY\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{mlcontext_8h_a9d705933667cb4cac495085a53cb71b8}\label{mlcontext_8h_a9d705933667cb4cac495085a53cb71b8} 
+\index{mlcontext.h@{mlcontext.h}!mlContextNew@{mlContextNew}}
+\index{mlContextNew@{mlContextNew}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{mlContextNew()}{mlContextNew()}}
+{\footnotesize\ttfamily int ml\+Context\+New (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{mlc }\end{DoxyParamCaption})}
+
+
+
+Funzione per la creazione di un nuovo contesto per un main loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Indirizzo a un puntatore Ml\+Context\texorpdfstring{$\ast$}{*}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR,MEMORY\+\_\+\+ERR,MUTEX\+\_\+\+INIT\+\_\+\+ERR,SIGMASK\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{mlcontext_8h_a70d3ce24b58bc3a05a7d567961821aca}\label{mlcontext_8h_a70d3ce24b58bc3a05a7d567961821aca} 
+\index{mlcontext.h@{mlcontext.h}!PopEventQueue@{PopEventQueue}}
+\index{PopEventQueue@{PopEventQueue}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{PopEventQueue()}{PopEventQueue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueue\+Element}} \texorpdfstring{$\ast$}{*} Pop\+Event\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc }\end{DoxyParamCaption})}
+
+
+
+Funzione con cui un main loop estrae un evento dalla cima della coda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è un puntatore alla struttura dati che rappresenta l\textquotesingle{}evento. 
+\end{DoxyReturn}
+\Hypertarget{mlcontext_8h_a642726007e882c83ac590cf093b52de4}\label{mlcontext_8h_a642726007e882c83ac590cf093b52de4} 
+\index{mlcontext.h@{mlcontext.h}!PrintSignalQueue@{PrintSignalQueue}}
+\index{PrintSignalQueue@{PrintSignalQueue}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{PrintSignalQueue()}{PrintSignalQueue()}}
+{\footnotesize\ttfamily void Print\+Signal\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc }\end{DoxyParamCaption})}
+
+
+
+Funzione per stampare nello stdout una rappresentazione della coda degli eventi associata al main loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mlcontext_8h_aac63cfb9f06a9f1c82ed52454ebce2e9}\label{mlcontext_8h_aac63cfb9f06a9f1c82ed52454ebce2e9} 
+\index{mlcontext.h@{mlcontext.h}!signalMainLoop@{signalMainLoop}}
+\index{signalMainLoop@{signalMainLoop}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{signalMainLoop()}{signalMainLoop()}}
+{\footnotesize\ttfamily int signal\+Main\+Loop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc,  }\item[{uint8\+\_\+t}]{c,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Funzione con cui un thread può segnalare un main loop. 
+
+La segnalazione è senza blocco del thread chiamante.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+{\em c} & comando da inviare al main loop. \\
+\hline
+{\em data} & dati associati al comando da eseguire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR,MUTEX\+\_\+\+UNLOCK\+\_\+\+ERR,MUTEX\+\_\+\+LOCK\+\_\+\+ERR,THREAD\+\_\+\+KILL\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{mlcontext_8h_ad79e3d687180947c71a622bff686bffd}\label{mlcontext_8h_ad79e3d687180947c71a622bff686bffd} 
+\index{mlcontext.h@{mlcontext.h}!signalMainLoopReply@{signalMainLoopReply}}
+\index{signalMainLoopReply@{signalMainLoopReply}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{signalMainLoopReply()}{signalMainLoopReply()}}
+{\footnotesize\ttfamily int signal\+Main\+Loop\+Reply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc,  }\item[{uint8\+\_\+t}]{c,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data,  }\item[{void \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Funzione con cui un thread può segnalare un main loop. 
+
+La segnalazione è con blocco del thread chiamante, in attesa della risposta da parte del main loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+{\em c} & comando da inviare al main loop. \\
+\hline
+{\em data} & dati associati al comando da eseguire. \\
+\hline
+{\em res} & puntatore a un buffer in cui il main loop memorizza la risposta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR,MUTEX\+\_\+\+UNLOCK\+\_\+\+ERR,MUTEX\+\_\+\+LOCK\+\_\+\+ERR,THREAD\+\_\+\+KILL\+\_\+\+ERR,SIGMASK\+\_\+\+ERR. 
+\end{DoxyReturn}
+\Hypertarget{mlcontext_8h_a66cfb59bbb0a0a8d873be8c6583948a1}\label{mlcontext_8h_a66cfb59bbb0a0a8d873be8c6583948a1} 
+\index{mlcontext.h@{mlcontext.h}!waitNewEvent@{waitNewEvent}}
+\index{waitNewEvent@{waitNewEvent}!mlcontext.h@{mlcontext.h}}
+\doxysubsubsection{\texorpdfstring{waitNewEvent()}{waitNewEvent()}}
+{\footnotesize\ttfamily int wait\+New\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{Ml\+Context}} \texorpdfstring{$\ast$}{*}}]{mlc }\end{DoxyParamCaption})}
+
+
+
+Funzione con cui il main loop si mette in attesa per ricevere nuovi eventi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mlc} & Puntatore a un contesto di un main loop. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il valore di ritorno è 0 nel caso di successo, altrimenti può tornare i codici NULL\+\_\+\+POINTER\+\_\+\+ERR,THREAD\+\_\+\+NOT\+\_\+\+ML\+\_\+\+ERR,SIGMASK\+\_\+\+ERR. 
+\end{DoxyReturn}

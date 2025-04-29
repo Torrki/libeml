@@ -1,0 +1,24 @@
+\doxysection{equeue.\+h}
+\hypertarget{equeue_8h_source}{}\label{equeue_8h_source}\index{include/equeue.h@{include/equeue.h}}
+\mbox{\hyperlink{equeue_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#include\ <pthread.h>}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_EQueueElement\ \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}};}
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_EQueue\ \mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{equeue_8h_ad59ca7222c5ad9f593a2a2c6c6d8ee0a}{EQueueNew}}(\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}}**\ q);}
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{equeue_8h_a61807d8b51a8b1268bee64aca1ab3b58}{EQueueDelete}}(\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}}*\ q);}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{equeue_8h_a417df3c7af5e4660ab64e41b84c7a2e0}{EQueuePush}}(\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}}*\ q,\ \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}*\ e);}
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{equeue_8h_a20bef5971ae8b75ee3e6f655bd059aad}{EQueuePop}}(\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}}*\ q,\ \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}**\ e);}
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{equeue_8h_a707e7d010bfb8df5e0f76bba1c935a45}{EQueueElementNew}}(\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}**\ e,\ pthread\_t\ \textcolor{keywordtype}{id},\ uint8\_t\ c,\ \textcolor{keywordtype}{void}*\ data,\ \textcolor{keywordtype}{void}*\ res);}
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{equeue_8h_a0775edf419e5b8d7092e873a8a9b0ce0}{GetEQueueElements}}(\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}}*\ q);}
+\DoxyCodeLine{00089\ pthread\_t\ \mbox{\hyperlink{equeue_8h_a4b9d45eaefd0c07e88141a4b76eea8d8}{GetIdThreadElement}}(\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}*\ e);}
+\DoxyCodeLine{00090\ uint8\_t\ \mbox{\hyperlink{equeue_8h_abc77b9389daa62d1143946f6edef36c5}{GetCommandElement}}(\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}*\ e);}
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{equeue_8h_a06f81c1629e245331f2bd7dd015db795}{GetResAddrElement}}(\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}*\ e);}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{equeue_8h_a0594289a1a2c10e32a165e922e89d2d8}{GetDataAddrElement}}(\mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}*\ e);}
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{equeue_8h_a4a867809456d890c2d8555a28749cb98}{PrintQueue}}(\mbox{\hyperlink{equeue_8h_a04b6cb23240b4020485e8c9d27af4afe}{EQueue}}*\ q);}
+
+\end{DoxyCode}

@@ -1,0 +1,20 @@
+\doxysection{mlcontext.\+h}
+\hypertarget{mlcontext_8h_source}{}\label{mlcontext_8h_source}\index{include/mlcontext.h@{include/mlcontext.h}}
+\mbox{\hyperlink{mlcontext_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{equeue_8h}{equeue.h}}"{}}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_mlcontext\ \mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mlcontext_8h_a9d705933667cb4cac495085a53cb71b8}{mlContextNew}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ **mlc);}
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mlcontext_8h_a21bfccde8f18dd36b04d9809661e4cdd}{mlContextDelete}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc);}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mlcontext_8h_aac63cfb9f06a9f1c82ed52454ebce2e9}{signalMainLoop}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc,\ uint8\_t\ c,\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mlcontext_8h_ad79e3d687180947c71a622bff686bffd}{signalMainLoopReply}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc,\ uint8\_t\ c,\ \textcolor{keywordtype}{void}*\ data,\ \textcolor{keywordtype}{void}*\ res);}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mlcontext_8h_a66cfb59bbb0a0a8d873be8c6583948a1}{waitNewEvent}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc);}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mlcontext_8h_a463c2dcba9a6b2ecfac5ada3281ec295}{GetNSignals}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc);}
+\DoxyCodeLine{00098\ \mbox{\hyperlink{equeue_8h_a24f03b2c0b08cbefbd2d1a191a8bec87}{EQueueElement}}*\ \mbox{\hyperlink{mlcontext_8h_a70d3ce24b58bc3a05a7d567961821aca}{PopEventQueue}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc);}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mlcontext_8h_a642726007e882c83ac590cf093b52de4}{PrintSignalQueue}}(\mbox{\hyperlink{mlcontext_8h_aa725d6c098a254733ad4545286c8d440}{MlContext}}\ *mlc);}
+
+\end{DoxyCode}

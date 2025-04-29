@@ -1,0 +1,26 @@
+\doxysection{\+\_\+mlcontext Struct Reference}
+\hypertarget{struct__mlcontext}{}\label{struct__mlcontext}\index{\_mlcontext@{\_mlcontext}}
+
+
+Collaboration diagram for \+\_\+mlcontext\+:
+% FIG 0
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct__mlcontext_adb26db2c1328566cdd524287d3dc36d5}\label{struct__mlcontext_adb26db2c1328566cdd524287d3dc36d5} 
+pthread\+\_\+t {\bfseries thread\+ML}
+\item 
+\Hypertarget{struct__mlcontext_abc64bf7d1ed4e7668daab5f71dcf9f0f}\label{struct__mlcontext_abc64bf7d1ed4e7668daab5f71dcf9f0f} 
+sigset\+\_\+t {\bfseries signal\+Mask}
+\item 
+\Hypertarget{struct__mlcontext_aa49e9a6130268f2e069feac8203eea13}\label{struct__mlcontext_aa49e9a6130268f2e069feac8203eea13} 
+pthread\+\_\+mutex\+\_\+t {\bfseries mutexmlc}
+\item 
+\Hypertarget{struct__mlcontext_a4022d23584c1f44a0f6ebe683d374c45}\label{struct__mlcontext_a4022d23584c1f44a0f6ebe683d374c45} 
+\mbox{\hyperlink{struct__EQueue}{EQueue}} \texorpdfstring{$\ast$}{*} {\bfseries event\+Queue}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mlcontext.\+c\end{DoxyCompactItemize}

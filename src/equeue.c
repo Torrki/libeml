@@ -3,7 +3,6 @@
 #include "equeue.h"
 #include "eventerr.h"
 
-//Definizione dell'elemento
 struct _EQueueElement{
   pthread_t idThread;
   uint8_t command;
@@ -12,13 +11,11 @@ struct _EQueueElement{
   EQueueElement *next;
 };
 
-//Definizione della coda
 struct _EQueue{
   uint16_t nElements;
   EQueueElement *head, *tail;
 };
 
-//Funzione per creare nuove code
 int EQueueNew(EQueue** q){
   if(q == NULL) return NULL_POINTER_ERR;
   *q=(EQueue*)calloc(1,sizeof(EQueue));
